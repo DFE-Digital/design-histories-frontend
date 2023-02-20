@@ -1043,15 +1043,15 @@ a.dfeuk-dh-tag {
 
   &:hover {
     color: $color_dfeuk-white;
-    background-color: #fd0;
+    background-color: govuk-colour("orange");
     color: #0b0c0c;
     outline: 4px solid transparent;
     text-decoration: none;
   }
 
   &:focus {
-    background-color: #fd0;
-    box-shadow: 0 -2px #fd0, 0 4px #0b0c0c;
+    background-color: govuk-colour("orange");
+    box-shadow: 0 -2px govuk-colour("orange") 0 4px #0b0c0c;
     color: #0b0c0c;
     outline: 4px solid transparent;
     text-decoration: none;
