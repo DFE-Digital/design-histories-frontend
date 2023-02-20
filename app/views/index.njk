@@ -1,0 +1,121 @@
+{% set pageDescription = "Documenting changes to services over time from teams in the Department for Education" %}
+{% set pageLayout = "Homepage" %}
+{% set pageTitle = "Design histories"%}
+{% set pageSection = "Home" %}
+
+{% extends "includes/layout.njk" %}
+
+{% block breadcrumb %}{% endblock %}
+
+{% block outerBody %}
+
+  <main id="maincontent" role="main">
+
+    <section class="dfeuk-hero">
+      <div class="dfeuk-width-container dfeuk-hero--border app-width-container">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <div class="dfeuk-hero__wrapper app-hero__wrapper">
+              <h1 class="dfeuk-u-margin-bottom-4">{{pageTitle}}</h1>
+              <p class="dfeuk-body-l dfeuk-u-margin-bottom-1">{{pageDescription}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="dfeuk-width-container app-width-container govuk-!-margin-top-9 govuk-!-margin-bottom-9">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+
+            <div class="dfeuk-width-container app-width-container">
+              <h2 class="govuk-heading-l">Recently published</h2>
+
+              
+
+              <ul class="dfeuk-grid-row dfeuk-card-group">
+                {% for post in posts.data %}
+
+                  <li class="dfeuk-grid-column-one-third dfeuk-card-group__item">
+                    <div class="dfeuk-card dfeuk-card__featured dfeuk-card--clickable">
+                      {% if post.attributes.FeaturedImage.data.attributes.formats.small.url %}
+                      <img class="dfeuk-card__img" src="{{post.attributes.FeaturedImage.data.attributes.formats.small.url}}" alt="{{post.attributes.FeaturedImage.data.attributes.alternativeText}}">
+                      {% endif %}
+                      <div class="dfeuk-card__content">
+                       
+                        <h2 class="dfeuk-card__heading dfeuk-heading-m">
+                          <a class="dfeuk-card__link" href="/{{services.data[0].attributes.Slug}}/{{post.attributes.Slug}}">{{post.attributes.Title}}</a>
+                        </h2>
+                        <p class="dfeuk-card__description govuk-body-s">{{post.attributes.Lede}}</p>
+                        <p class="dfeuk-card__description dfeuk-card__description-meta govuk-body-s">Published in {{post.attributes.service.data.attributes.Title}}</p>
+                      </div>
+                    </div>
+                  </li>
+                {% endfor %}
+              </ul>
+
+            </div>
+          </div>
+          <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-m">Teams</h2>
+
+            <ul class="dfeuk-grid-row dfeuk-card-group">
+              {% for team in teams.data %}
+                {% set authSessionKey = 'auth-' + team.attributes.Slug%}
+                {% if not team.attributes.Password %}
+                  <li class="dfeuk-grid-column-full dfeuk-card-group__item">
+                    <div class="dfeuk-card dfeuk-card--clickable">
+                      <div class="dfeuk-card__content">
+                        <h2 class="dfeuk-card__heading dfeuk-heading-s">
+                          <a class="dfeuk-card__link" href="/team/{{team.attributes.Slug}}">{{team.attributes.Title}}</a>
+                        </h2>
+                        <p class="dfeuk-card__description  govuk-body-s">{{team.attributes.Description}}</p>
+                      </div>
+                    </div>
+                  </li>
+                {% elseif service.attributes.Password and data[authSessionKey] === true%}
+                  <li class="dfeuk-grid-column-full dfeuk-card-group__item">
+                    <div class="dfeuk-card dfeuk-card--clickable">
+                      <div class="dfeuk-card__content">
+                        <h2 class="dfeuk-card__heading dfeuk-heading-m">
+                          <a class="dfeuk-card__link" href="/team/{{service.attributes.Slug}}">{{service.attributes.Title}}</a>
+                        </h2>
+                        <p class="dfeuk-card__description">{{service.attributes.Description}}</p>
+                      </div>
+                    </div>
+                  </li>
+                {% endif %}
+
+              {% endfor %}
+
+            </ul>
+
+          </div>
+          <div class="govuk-grid-column-one-third">
+
+            <h2 class="govuk-heading-m">Posts by tag</h2>
+
+
+            {% for tag in tags.data %}
+
+
+
+      <a href="/tag/{{tag.attributes.Slug}}" class="dfeuk-dh-tag">{{tag.attributes.Tag}}</a>
+
+            {% endfor %}
+
+           
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+{% endblock %}

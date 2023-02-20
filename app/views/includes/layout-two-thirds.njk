@@ -1,0 +1,63 @@
+{% extends "includes/layout.njk" %}
+
+{% block body %}
+  <div class="dfeuk-grid-row">
+    <div class="dfeuk-grid-column-full app-component-reading-width">
+
+      <div class="dfeuk-grid-row">
+
+        <div class="dfeuk-grid-column-two-thirds">
+
+          <h1 class="app-page-heading">
+
+            <span class="dfeuk-caption-l">
+              {%- if subSection %}
+                {%- if theme %}
+                  {{theme}}
+                {% else %}
+                  {{subSection}}
+                {% endif %}
+              {% else %}
+                {{pageSection}}
+              {% endif %}
+              <span class="dfeuk-u-visually-hidden"> - </span>
+            </span>
+
+            {{pageTitle}}
+          </h1>
+
+          {%- if hideDescription %}
+          {% else %}
+            <p class="dfeuk-lede-text app-lede-text">{{pageDescription}}</p>
+          {% endif %}
+
+          {% block bodyContent %}
+
+<div class="app-index-navigation app-u-hide-desktop govuk-!-margin-bottom-3">
+   <details class="dfeuk-details dfeuk-expander">
+            <summary class="dfeuk-details__summary">
+                <span class="dfeuk-details__summary-text ">
+        Section menu
+      </span>
+            </summary>
+            <div class="dfeuk-details__text  govuk-!-margin-left-5">
+                 {% include "includes/_side-nav.njk" %}
+            </div>
+        </details>
+</div>{% endblock %}
+
+          {% block afterContact %}{% endblock %}
+
+          {%- if dateUpdated %}
+            <p class="dfeuk-body-s dfeuk-u-secondary-text-color dfeuk-u-margin-top-5 dfeuk-u-margin-bottom-0">Updated: {{dateUpdated}}</p>
+          {% endif %}
+
+        </div>
+
+        <div class="dfeuk-grid-column-one-third"></div>
+
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

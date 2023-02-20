@@ -1,0 +1,67 @@
+{% set pageTitle = "Teams" %}
+{% set pageDescription = "Teams in the Department for Education publishing design histories"%}
+{% set team = ""%}
+{% set pageSection = "Teams" %}
+
+{% extends "includes/dh-layout.njk" %}
+
+{% block breadcrumb %}
+  {{ breadcrumb({
+ 
+  href: "/",
+  text: "Home",
+  classes: "app-breadcrumb"
+}) }}
+
+{% endblock %}
+
+{% block bodyContent %}
+
+  <div class="app-index-navigation app-u-hide-desktop govuk-!-margin-bottom-3">
+    <details class="dfeuk-details dfeuk-expander">
+      <summary class="dfeuk-details__summary">
+        <span class="dfeuk-details__summary-text ">
+        Section menu
+      </span>
+      </summary>
+      <div class="dfeuk-details__text  govuk-!-margin-left-5">
+        {% include "includes/_side-nav.njk" %}
+      </div>
+    </details>
+  </div>
+
+  <ul class="dfeuk-grid-row dfeuk-card-group">
+              {% for team in teams.data %}
+                {% set authSessionKey = 'auth-' + team.attributes.Slug%}
+                {% if not team.attributes.Password %}
+                  <li class="dfeuk-grid-column-full dfeuk-card-group__item">
+                    <div class="dfeuk-card dfeuk-card--clickable">
+                      <div class="dfeuk-card__content">
+                        <h2 class="dfeuk-card__heading dfeuk-heading-s">
+                          <a class="dfeuk-card__link" href="/team/{{team.attributes.Slug}}">{{team.attributes.Title}}</a>
+                        </h2>
+                        <p class="dfeuk-card__description  govuk-body-s">{{team.attributes.Description}}</p>
+                      </div>
+                    </div>
+                  </li>
+                {% elseif service.attributes.Password and data[authSessionKey] === true%}
+                  <li class="dfeuk-grid-column-full dfeuk-card-group__item">
+                    <div class="dfeuk-card dfeuk-card--clickable">
+                      <div class="dfeuk-card__content">
+                        <h2 class="dfeuk-card__heading dfeuk-heading-m">
+                          <a class="dfeuk-card__link" href="/team/{{service.attributes.Slug}}">{{service.attributes.Title}}</a>
+                        </h2>
+                        <p class="dfeuk-card__description">{{service.attributes.Description}}</p>
+                      </div>
+                    </div>
+                  </li>
+                {% endif %}
+
+              {% endfor %}
+
+            </ul>
+
+
+{% endblock %}
+
+{% block sideContent %}{% endblock %}

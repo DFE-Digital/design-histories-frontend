@@ -1,0 +1,34 @@
+{% set data = data.data[0].attributes%}
+
+{% set pageTitle = "Password required" %}
+{% set pageDescription = "data.Lede "%}
+
+{% extends "includes/dh-layout.njk" %}
+
+
+
+{% block bodyContent %}
+
+  
+  <form action="/auth/{{services.data[0].attributes.Slug}}" method="post">
+            <div class="govuk-form-group {% if data['error'] %}govuk-form-group--error{% endif%}">
+            <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="password">
+                Password
+                </label>
+            </h2>
+            {% if data['error'] %} <p id="event-name-error" class="govuk-error-message">
+    <span class="govuk-visually-hidden">Error:</span> {{data['error']}}
+  </p>{% endif%}
+            <input class="govuk-input {% if data['error'] %}govuk-input--error{% endif%}" id="password" name="password" type="text">
+            </div>
+            <button class="govuk-button" data-module="govuk-button" type="submit">
+            Submit
+            </button>
+        </form>
+{% endblock %}
+
+{% block sideContent %}
+
+
+
+{% endblock %}

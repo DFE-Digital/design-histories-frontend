@@ -1,0 +1,123 @@
+{% set standards = [
+  {
+    title: "1. Understand users and their needs",
+    url: "/service-standard/1-understand-user-needs"
+  },  {
+    title: "2. Solve a whole problem for users",
+    url: "/service-standard/2-solve-a-whole-problem.html"
+  },  {
+    title: "3. Provide a joined up experience across all channels",
+    url: "/service-standard/3-join-up-across-channels.html"
+  },  {
+    title: "4. Make the service simple to use",
+    url: "/service-standard/4-make-the-service-simple-to-use.html"
+  },  {
+    title: "5. Make sure everyone can use the service",
+    url: "/service-standard/5-make-sure-everyone-can-use-the-service.html"
+  },  {
+    title: "6. Have a multidisciplinary team",
+    url: "/service-standard/6-have-a-multidisciplinary-team.html"
+  },  {
+    title: "7. Use agile ways of working",
+    url: "/service-standard/7-use-agile-ways-of-working.html"
+  },  {
+    title: "8. Iterate and improve frequently",
+    url: "/service-standard/8-iterate-and-improve-frequently.html"
+  },  {
+    title: "9. Create a secure service which protects users’ privacy",
+    url: "/service-standard/9-create-a-secure-service.html"
+  },  {
+    title: "10. Define what success looks like and publish performance data",
+    url: "/service-standard/10-define-success-publish-performance-data.html"
+  },  {
+    title: "11. Choose the right tools and technology",
+    url: "/service-standard/11-choose-the-right-tools-and-technology.html"
+  },  {
+    title: "12. Make new source code open",
+    url: "/service-standard/12-make-new-source-code-open.html"
+  },  {
+    title: "13. Use and contribute to open standards, common components and patterns",
+    url: "/service-standard/13-use-common-standards-components-patterns.html"
+  }, {
+    title: "14. Operate a reliable service",
+    url: "/service-standard/14-operate-a-reliable-service.html"
+  }
+] %}
+
+
+{% set assurance = [
+   {
+    title: "Service assurance overview",
+    url: "/service-assurance"
+  }
+  ] %}
+
+{% set discoverypr = [
+   {
+    title: "Discovery peer review",
+    url: "/service-assurance/discovery"
+  },  {
+    title: "Book a peer review",
+    url: "/service-assurance/discovery/book"
+  }
+  ] %}
+
+
+{# 
+{% set assessments = [
+   {
+    title: "Alpha",
+    url: "/service-assurance/discovery"
+  },  {
+    title: "Beta",
+    url: "/service-assurance/discovery/book"
+  }
+  ] %} #}
+
+
+<nav class="app-side-nav">
+
+  {%- if pageSection == "Service Standard" %}
+    <h2 class="app-side-nav__heading">Standard points</h2>
+    <ul class="dfeuk-list app-side-nav__list">
+      {% for item in standards %}
+        <li class="app-side-nav__item{% if item.title == pageTitle %} app-side-nav__item--current{% endif %}">
+          <a class="app-side-nav__link" href="{{ item.url }}">{{ item.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {%- if pageSection == "Service assurance" %}
+
+   <ul class="dfeuk-list app-side-nav__list">
+      {% for item in assurance %}
+        <li class="app-side-nav__item{% if item.title == pageTitle %} app-side-nav__item--current{% endif %}">
+          <a class="app-side-nav__link" href="{{ item.url }}">{{ item.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <h2 class="app-side-nav__heading">Discovery peer reviews</h2>
+    <ul class="dfeuk-list app-side-nav__list">
+      {% for item in discoverypr %}
+        <li class="app-side-nav__item{% if item.title == pageTitle %} app-side-nav__item--current{% endif %}">
+          <a class="app-side-nav__link" href="{{ item.url }}">{{ item.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+
+    {# <h2 class="app-side-nav__heading">Service assessments</h2>
+    <ul class="dfeuk-list app-side-nav__list">
+      {% for item in assessments %}
+        <li class="app-side-nav__item{% if item.title == pageTitle %} app-side-nav__item--current{% endif %}">
+          <a class="app-side-nav__link" href="{{ item.url }}">{{ item.title }}</a>
+        </li>
+      {% endfor %}
+    </ul> #}
+    
+  {% endif %}
+
+
+
+</nav>

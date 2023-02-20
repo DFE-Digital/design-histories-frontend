@@ -1,0 +1,38 @@
+/* ==========================================================================
+   #RELATED-NAV
+   ========================================================================== */
+
+.dfeuk-related-nav {
+  border-top: 2px solid $color_dfeuk-blue;
+
+  @include mq($until: desktop) {
+    margin-top: dfeuk-spacing(7);
+  }
+}
+
+.dfeuk-related-nav__heading {
+  @include dfeuk-typography-responsive(24, $override-line-height: 1.2);
+
+  margin-bottom: dfeuk-spacing(3);
+  padding-top: dfeuk-spacing(3);
+}
+
+.dfeuk-related-nav__heading--small {
+  @include dfeuk-typography-responsive(19);
+}
+
+.dfeuk-related-nav__list {
+  list-style: none;
+  margin-bottom: dfeuk-spacing(3);
+  padding-left: dfeuk-spacing(0);
+}
+
+.dfeuk-related-nav__item {
+  @include dfeuk-typography-responsive(16);
+}
+
+.dfeuk-related-nav__sub-heading {
+  @include dfeuk-responsive-margin(2, 'bottom');
+  @include dfeuk-responsive-padding(2, 'top');
+  @include dfeuk-typography-responsive(19, $override-line-height: 1.2);
+}

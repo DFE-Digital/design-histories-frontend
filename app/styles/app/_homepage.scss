@@ -1,0 +1,24 @@
+/* ==========================================================================
+   #HOMEPAGE
+   ========================================================================== */
+
+/**
+ * Custom style for the homepage
+ */
+
+.dfeuk-section {
+  @include dfeuk-responsive-padding(6, 'bottom');
+  @include dfeuk-responsive-padding(6, 'top');
+
+  @include mq($until: desktop) {
+
+    .dfeuk-grid-column-one-half:last-child {
+      padding-top: dfeuk-spacing(3);
+    }
+
+  }
+}
+
+.dfeuk-section--white {
+  background-color: $color_dfeuk-white;
+}

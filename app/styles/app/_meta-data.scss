@@ -1,0 +1,23 @@
+// Added meta data for a promo (date)
+.app-meta-data {
+  @include dfeuk-font($size: 16);
+
+  color: $dfeuk-secondary-text-color;
+
+  + .app-meta-data {
+    margin-top: - dfeuk-spacing(3);
+  }
+
+  @include mq($from: tablet) {
+    margin-bottom: dfeuk-spacing(3);
+
+    + .app-meta-data {
+      margin-top: - dfeuk-spacing(3);
+  }
+  }
+}
+
+.app-meta-data--strong {
+  color: $dfeuk-text-color;
+  font-weight: 600;
+}

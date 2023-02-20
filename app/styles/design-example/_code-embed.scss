@@ -1,0 +1,13 @@
+.code-embed {
+  background-color: $color_dfeuk-grey-5;
+  border: 1px solid $color_dfeuk-grey-3;
+
+  iframe {
+    display: block;
+    width: 100%;
+  }
+
+  + .code-snippet {
+    margin-top: -1px;
+  }
+}

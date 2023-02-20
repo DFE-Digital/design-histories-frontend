@@ -1,0 +1,20 @@
+/* ==========================================================================
+   #PAGE-CONTENTS
+   ========================================================================== */
+
+.app-page-contents {
+  @include dfeuk-responsive-margin(5, 'bottom');
+}
+
+.app-page-contents__heading {
+  @include dfeuk-font(19, $weight: bold);
+  @include dfeuk-responsive-margin(3, 'bottom');
+}
+
+.app-page-contents__list {
+  @include dfeuk-font(16);
+}
+
+.app-page-contents__item {
+  @include dfeuk-responsive-margin(1, 'bottom');
+}

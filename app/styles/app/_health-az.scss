@@ -1,0 +1,26 @@
+/* ==========================================================================
+   #HEALTH-A-Z
+   ========================================================================== */
+
+/**
+ * Custom style for the content style guide
+ */
+
+.app-style-guide-a-z {
+
+  .dfeuk-a-z-list--results-items {
+    @include dfeuk-responsive-margin(9, 'bottom');
+  }
+
+  .dfeuk-back-to-top__link {
+    margin-left: 0;
+  }
+
+  h2 {
+    background: $color_dfeuk-blue;
+    color: $color_dfeuk-white;
+    display: inline-block;
+    padding: dfeuk-spacing(2) + $dfeuk-box-shadow-link;
+  }
+
+}

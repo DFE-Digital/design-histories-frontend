@@ -1,0 +1,55 @@
+{% extends "includes/layout.njk" %}
+
+{% block body %}
+  <div class="dfeuk-grid-row">
+    <div class="dfeuk-grid-column-full">
+
+      <div class="dfeuk-panel dfeuk-panel--grey">
+
+        <span class="govuk-caption-l">
+          {%- if team %}
+            {{team}}
+          {% endif %}
+
+          <span class="dfeuk-u-visually-hidden"> - </span>
+        </span>
+        <h1 class="govuk-heading-l">
+          {{pageTitle}}
+        </h1>
+
+        {%- if hideDescription %}
+        {% else %}
+          <p class="govuk-body-l  {% if not dateUpdated %}govuk-!-margin-bottom-0{% endif %} {%- if extraDescription %}govuk-!-margin-bottom-3{% endif %}">
+            {%if pageDescriptionPageOverride%}{{pageDescriptionPageOverride | safe}}{% else%}{{pageDescription | safe}}
+            {% endif %}
+          </p>
+        {% endif %}
+
+            {%- if extraDescription %}
+            <p class="govuk-!-margin-bottom-0 govuk-body-s">{{extraDescription | safe}}</p>
+          {% endif %}
+
+        {% if dateUpdated %}
+          <p class="govuk-body-s {% if tags %} govuk-!-margin-bottom-3 {% else %} govuk-!-margin-bottom-0{% endif %}">Published: {{dateUpdated | date('D MMMM YYYY')}}</p>
+        {% endif %}
+
+      
+        </div>
+
+      </div>
+    </div>
+
+    <div class="dfeuk-grid-row">
+      <div class="dfeuk-grid-column-two-thirds">
+
+        {% block bodyContent%}{% endblock %}
+
+      </div>
+
+      <div class="dfeuk-grid-column-one-third">
+
+        {% block sideContent %}{% endblock %}
+      </div>
+    </div>
+
+  {% endblock %}

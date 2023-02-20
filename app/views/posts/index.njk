@@ -1,0 +1,76 @@
+{% set pageTitle = services
+  .data[0]
+  .attributes
+  .Title + " posts" %}
+{% set pageDescription = services.data[0].attributes.Description%}
+{% set extraDescription = "Published by: <a href='/team/" + services
+  .data[0]
+  .attributes
+  .team
+  .data
+  .attributes
+  .Slug + "'>" + services
+  .data[0]
+  .attributes
+  .team
+  .data
+  .attributes
+  .Title + "</a>" %}
+
+{% extends "includes/dh-layout.njk" %}
+
+{% block breadcrumb %}
+  {{ breadcrumb({
+ 
+  href: "/",
+  text: "Home",
+  classes: "app-breadcrumb"
+}) }}
+
+{% endblock %}
+
+{% block bodyContent %}
+
+  <div class="app-index-navigation app-u-hide-desktop govuk-!-margin-bottom-3">
+    <details class="dfeuk-details dfeuk-expander">
+      <summary class="dfeuk-details__summary">
+        <span class="dfeuk-details__summary-text ">
+        Section menu
+      </span>
+      </summary>
+      <div class="dfeuk-details__text  govuk-!-margin-left-5">
+        {% include "includes/_side-nav.njk" %}
+      </div>
+    </details>
+  </div>
+
+  <ul class="dfeuk-grid-row dfeuk-card-group">
+    {% for post in posts.data %}
+      <li class="dfeuk-grid-column-one-half dfeuk-card-group__item">
+        <div class="dfeuk-card dfeuk-card--clickable">
+
+          {% if post.attributes.FeaturedImage.data.attributes.formats.small.url %}
+            <img class="dfeuk-card__img" src="{{post.attributes.FeaturedImage.data.attributes.formats.small.url}}" alt="{{post.attributes.FeaturedImage.data.attributes.alternativeText}}">
+            {% endif%}
+            <div class="dfeuk-card__content">
+              <h2 class="dfeuk-card__heading dfeuk-heading-s">
+                <a class="dfeuk-card__link" href="/{{services.data[0].attributes.Slug}}/{{post.attributes.Slug}}">{{post.attributes.Title}}</a>
+              </h2>
+              <p class="dfeuk-card__description govuk-body-s">{{post.attributes.Lede}}</p>
+              <p class="dfeuk-card__description govuk-body-s">Published: 
+                            {% if post.attributes.Publication_date %}
+                  {{ post.attributes.Publication_date | date('D MMMM YYYY')}}
+                {% else %}
+                  {{ post.attributes.publishedAt | date('D MMMM YYYY')}}
+                {% endif %}
+              </p>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+
+    </ul>
+
+  {% endblock %}
+
+  {% block sideContent %}{% endblock %}
