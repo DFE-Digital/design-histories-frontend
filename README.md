@@ -1,6 +1,7 @@
-# DfE User-centered design
+# Design histories frontend
 
-Guidance for designing and building digital services for DfE. Things you need to make consistent, usable services that put children and learners first.
+Frontend for the design history service at https://design-histories.education.gov.uk 
+
 
 ## Running the application locally
 
@@ -8,16 +9,31 @@ Guidance for designing and building digital services for DfE. Things you need to
 
 Install the long-term support (LTS) version of <a href="https://nodejs.org/en/">Node.js</a>, which includes npm.
 
+### Content Management System (CMS)
+
+You will need a version of the Strapi CMS running locally. You can clone the version we use for this CMS and run that locally. 
+
+Our version of Strapi which has models to support the design history frontend can be cloned from: https://github.com/DFE-Digital/design-histories-cms-strapi/tree/main/dfe-design-histories-cms
+
 ### Cloning and running the application
 
-Clone the repo: 
+Clone the repo: https://github.com/DFE-Digital/design-histories-frontend.git
 
-install the required npm packages with: `npm install`.
+Install the required npm packages with: `npm install`
 
-Run the project in development mode `npm run watch` and visit <a href="http://localhost:3000">http://localhost:3000</a>.
+Create a .env file on the root of the project and add 2 keys:
+
+apikey=
+cmsurl=
+
+You will need to generate an API within Strapi to assign to the apikey parameter and update the URL to the running version of the CMS.
+
+Run the project in development mode `npm run watch` and visit <a href="http://localhost:3098">http://localhost:3098</a>.
 
 
-## Get in touch
+## Get in touch if you need help
+
+https://design-histories.education.gov.uk/design-ops/
 
 
 ## Licence
