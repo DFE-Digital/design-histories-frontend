@@ -47,6 +47,7 @@
         .attributes
         .services
         .data %}
+        {% if not service.attributes.Password %}
         <li class="dfeuk-grid-column-full dfeuk-card-group__item">
           <div class="dfeuk-card dfeuk-card--clickable">
             <div class="dfeuk-card__content">
@@ -58,6 +59,7 @@
             </div>
           </div>
         </li>
+        {% endif %}
       {% endfor %}
 
     </ul>
